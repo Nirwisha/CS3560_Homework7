@@ -1,21 +1,30 @@
+import java.util.Random;
+
 public class PaleoFactory extends MacronutrientFactory {
-    private CarbsFactory carbsFactory = CarbsFactory.getCarbsDiet();
-    private ProteinFactory proteinFactory = ProteinFactory.getProteinDiet();
-    private FatsFactory fatsFactory = FatsFactory.getFatsDiet();
+    private CarbsFactory carbsFactory = CarbsFactory.getInstance();
+    private ProteinFactory proteinFactory = ProteinFactory.getInstance();
+    private FatsFactory fatsFactory = FatsFactory.getInstance();
 
     @Override 
     public Carbs createCarbsDiet() {
-        return carbsFactory.getCarbs("Paleo");
+        return carbsFactory.getCarbs("pistachio");
     }
 
     @Override 
     public Protein createProteinDiet() {
-        return proteinFactory.getProtein("Paleo");
+        //random items for meal
+        String[] choices = {"beef", "chicken", "fish"};
+        String choice = choices[new Random().nextInt(choices.length)];
+
+        return proteinFactory.getProtein(choice);
     }
 
     @Override 
     public Fats createFatsDiet() {
-        return fatsFactory.getFats("Paleo");
+        String[] choices = {"avocado", "tuna", "peanuts"};
+        String choice = choices[new Random().nextInt(choices.length)];
+
+        return fatsFactory.getFats(choice);
 
     }
 }

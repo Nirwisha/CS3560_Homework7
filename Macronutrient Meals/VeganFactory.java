@@ -1,21 +1,29 @@
+import java.util.Random;
+
 public class VeganFactory extends MacronutrientFactory {
-    private CarbsFactory carbsFactory = CarbsFactory.getCarbsDiet();
-    private ProteinFactory proteinFactory = ProteinFactory.getProteinDiet();
-    private FatsFactory fatsFactory = FatsFactory.getFatsDiet();
+    private CarbsFactory carbsFactory = CarbsFactory.getInstance();
+    private ProteinFactory proteinFactory = ProteinFactory.getInstance();
+    private FatsFactory fatsFactory = FatsFactory.getInstance();
 
     @Override 
     public Carbs createCarbsDiet() {
-        return carbsFactory.getCarbs("Vegan");
+        String[] choices = {"pistachio", "bread", "lentils"};
+        String choice = choices[new Random().nextInt(choices.length)];
+
+        return carbsFactory.getCarbs(choice);
     }
 
     @Override 
     public Protein createProteinDiet() {
-        return proteinFactory.getProtein("Vegan");
+        return proteinFactory.getProtein("tofu");
     }
 
     @Override 
     public Fats createFatsDiet() {
-        return fatsFactory.getFats("Vegan");
+        String[] choices = {"avocado", "peanuts"};
+        String choice = choices[new Random().nextInt(choices.length)];
+
+        return fatsFactory.getFats(choice);
 
     }
 }

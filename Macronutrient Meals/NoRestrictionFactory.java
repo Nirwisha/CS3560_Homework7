@@ -1,21 +1,32 @@
+import java.util.Random;
+
 public class NoRestrictionFactory extends MacronutrientFactory {
-    private CarbsFactory carbsFactory = CarbsFactory.getCarbsDiet();
-    private ProteinFactory proteinFactory = ProteinFactory.getProteinDiet();
-    private FatsFactory fatsFactory = FatsFactory.getFatsDiet();
+    private CarbsFactory carbsFactory = CarbsFactory.getInstance();
+    private ProteinFactory proteinFactory = ProteinFactory.getInstance();
+    private FatsFactory fatsFactory = FatsFactory.getInstance();
 
     @Override 
     public Carbs createCarbsDiet() {
-        return carbsFactory.getCarbs("No Restriction");
+        String[] choices = {"cheese", "bread", "lentils", "pistachio"};
+        String choice = choices[new Random().nextInt(choices.length)];
+
+        return carbsFactory.getCarbs(choice);
     }
 
     @Override 
     public Protein createProteinDiet() {
-        return proteinFactory.getProtein("No Restriction");
+        String[] choices = {"beef", "chicken", "fish", "tofu"};
+        String choice = choices[new Random().nextInt(choices.length)];
+
+        return proteinFactory.getProtein(choice);
     }
 
     @Override 
     public Fats createFatsDiet() {
-        return fatsFactory.getFats("No Restriction");
+        String[] choices = {"avocado", "sour cream", "tuna", "peanuts"};
+        String choice = choices[new Random().nextInt(choices.length)];
+
+        return fatsFactory.getFats(choice);
 
     }
 }
