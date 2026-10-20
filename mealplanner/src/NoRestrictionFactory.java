@@ -1,13 +1,14 @@
 import java.util.Random;
 
-public class NutAllergyFactory extends MacronutrientFactory {
+public class NoRestrictionFactory extends MacronutrientFactory {
     private CarbsFactory carbsFactory = CarbsFactory.getInstance();
     private ProteinFactory proteinFactory = ProteinFactory.getInstance();
     private FatsFactory fatsFactory = FatsFactory.getInstance();
 
     @Override 
     public Carbs createCarbsDiet() {
-        String[] choices = {"cheese", "bread", "lentils"};
+        //random items for meal
+        String[] choices = {"cheese", "bread", "lentils", "pistachio"};
         String choice = choices[new Random().nextInt(choices.length)];
 
         return carbsFactory.getCarbs(choice);
@@ -15,6 +16,7 @@ public class NutAllergyFactory extends MacronutrientFactory {
 
     @Override 
     public Protein createProteinDiet() {
+        //random items for meal
         String[] choices = {"beef", "chicken", "fish", "tofu"};
         String choice = choices[new Random().nextInt(choices.length)];
 
@@ -23,7 +25,8 @@ public class NutAllergyFactory extends MacronutrientFactory {
 
     @Override 
     public Fats createFatsDiet() {
-        String[] choices = {"avocado", "sour cream", "tuna"};
+        //random items for meal
+        String[] choices = {"avocado", "sour cream", "tuna", "peanuts"};
         String choice = choices[new Random().nextInt(choices.length)];
 
         return fatsFactory.getFats(choice);

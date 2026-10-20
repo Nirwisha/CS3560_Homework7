@@ -1,26 +1,29 @@
 import java.util.Random;
 
-public class VeganFactory extends MacronutrientFactory {
+public class PaleoFactory extends MacronutrientFactory {
     private CarbsFactory carbsFactory = CarbsFactory.getInstance();
     private ProteinFactory proteinFactory = ProteinFactory.getInstance();
     private FatsFactory fatsFactory = FatsFactory.getInstance();
 
     @Override 
     public Carbs createCarbsDiet() {
-        String[] choices = {"pistachio", "bread", "lentils"};
-        String choice = choices[new Random().nextInt(choices.length)];
-
-        return carbsFactory.getCarbs(choice);
+        //only one type of meal, not need for random
+        return carbsFactory.getCarbs("pistachio");
     }
 
     @Override 
     public Protein createProteinDiet() {
-        return proteinFactory.getProtein("tofu");
+        //random items for meal
+        String[] choices = {"beef", "chicken", "fish"};
+        String choice = choices[new Random().nextInt(choices.length)];
+
+        return proteinFactory.getProtein(choice);
     }
 
     @Override 
     public Fats createFatsDiet() {
-        String[] choices = {"avocado", "peanuts"};
+        //random items for meal
+        String[] choices = {"avocado", "tuna", "peanuts"};
         String choice = choices[new Random().nextInt(choices.length)];
 
         return fatsFactory.getFats(choice);
